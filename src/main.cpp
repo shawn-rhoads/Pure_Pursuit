@@ -1,8 +1,6 @@
 /*
-
 AUTHOR: Shawn M. Rhoads
 https://github.com/shawn-rhoads/
-
 */
 
 
@@ -50,6 +48,7 @@ Motor right1(-18);
 Motor right2(-19);
 Motor right3(-20);
 
+// Creates the ControllerButton objects by assigning the references from each button on the controller device.
 ControllerButton armUpButton(ControllerDigital::R1);
 ControllerButton armDownButton(ControllerDigital::R2);
 ControllerButton grab1Button(ControllerDigital::L1);
@@ -64,6 +63,7 @@ ControllerButton brakeModeButton(ControllerDigital::A);
 ControllerButton SwapperButton (ControllerDigital::A);
 pros::ADIDigitalOut pistonS ('D');
 
+// Lowers the backside lift of the robot until it detects a collision or resistance
 void lowerBack() {
 	clutchMotor.moveVelocity(0);
 	while (clutchMotor.getEfficiency() > 20) {
@@ -79,6 +79,7 @@ void lowerBack() {
 	clutchMotor.tarePosition();
 }
 
+// This method will run whenever the robot is turned on or reset. Sensor readings, positional tracking and starting positions are reset.
 void initialize() {
 
 	//pros::lcd::register_btn1_cb(on_center_button);
@@ -128,10 +129,12 @@ void initialize() {
 	pros::delay(500);
 }
 
+// To be used if the robot needs to do something while disabled.
 void disabled() {}
 
 void competition_initialize() {}
 
+/* THE FOLLOWING TWO FUNCTIONS SHOULD BE MOVED TO A SEPARATE CLASS */
 double degreesToRadians(double degrees) {
 	double radians = degrees * M_PI / 180;
 	return radians;
@@ -142,6 +145,7 @@ double radiansToDegrees(double radians) {
 	return degrees;
 }
 
+// Force the robot to set its current odom tracking to a specific orientation.
 void setOrientation(QLength x, QLength y, QAngle yaw) {
 	drive->setState(OdomState{x, y, yaw});
 	double value = yaw.convert(okapi::degree);
@@ -166,6 +170,7 @@ double getDriveYaw() {
 	return ds.theta.getValue();
 }
 
+// Sets the odometry to where the GPS sensor believes it is positioned.
 void setAtGps() {
 	pros::delay(50);
 	pros::c::gps_status_s_t status;
@@ -182,6 +187,7 @@ void outputLocationDetails() {
 
 }
 
+// Autonomous Movemvent Portion of the VEX Robotics Competition
 void autonomous() {
 	drive =
 		ChassisControllerBuilder()
@@ -269,49 +275,6 @@ void autonomous() {
 	pros::delay(175);
 	clutchMotor.moveAbsolute(10,200);
 	drive->moveDistance(-60_in);
-	/*pistonB.set_value(0);
-	drive->setMaxVelocity(90);
-	drive->moveDistance(15_in);
-	drive->turnAngle(80_deg);
-	drive->setMaxVelocity(40);
-	setOrientation(0_in,0_in,0_deg);
-	left1.moveVelocity(-100);
-	left2.moveVelocity(-100);
-	left3.moveVelocity(-100);
-	right1.moveVelocity(-100);
-	right2.moveVelocity(-100);
-	right3.moveVelocity(-100);
-	while(getDriveX() > -0.8) {
-		pros::delay(20);
-	}
-	left1.moveVelocity(0);
-	left2.moveVelocity(0);
-	left3.moveVelocity(0);
-	right1.moveVelocity(0);
-	right2.moveVelocity(0);
-	right3.moveVelocity(0);
-	pistonB.set_value(1);
-	pistonC.set_value(1);
-	pros::delay(100);
-	clutchMotor.moveVelocity(200);
-	while (clutchMotor.getPosition() < 3000) {
-		pros::delay(20);
-	}
-	clutchMotor.moveVelocity(0);
-	pistonC.set_value(0);
-	pros::delay(100);
-	clutchMotor.moveVelocity(-200);
-	drive->setMaxVelocity(100);
-	drive->moveDistance(21_in);
-	clutchMotor.tarePosition();
-	pistonC.set_value(1);
-	clutchMotor.moveVelocity(-200);
-	while (clutchMotor.getPosition() > -2500) {
-		pros::delay(10);
-	}
-	clutchMotor.moveVelocity(0);
-	pistonB.set_value(0);
-	drive->moveDistance(6_in);*/
 }
 
 void startTopNeutralDropOtherSide() {
