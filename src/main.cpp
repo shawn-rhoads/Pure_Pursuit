@@ -1,3 +1,10 @@
+/*
+
+AUTHOR: Shawn M. Rhoads
+
+*/
+
+
 #include "main.h"
 #include "okapi/api.hpp"
 #include "api.hpp"
