@@ -1,6 +1,6 @@
 # VEX Tipping Point Pure Pursuit Library
 
-IMPORTANT: ORIGINAL LIBRARY BY 
+Important: This library is based off of the work of 
 @author D Michael Jones, 914M - acetousk
 @author Ryan Benasutti, WPI - Octogonapus
 
