@@ -1,6 +1,7 @@
 # VEX Tipping Point Pure Pursuit Library
 
 Author: Shawn Rhoads
+
 Uses AutoLib and Okabi libraries
 
 This code implements a Pure Pursuit movement sytem to be used with mentioned libraries
