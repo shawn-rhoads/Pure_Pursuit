@@ -1,8 +1,10 @@
 # VEX Tipping Point Pure Pursuit Library
 
-Author: Shawn Rhoads
+IMPORTANT: ORIGINAL LIBRARY BY 
+@author D Michael Jones, 914M - acetousk
+@author Ryan Benasutti, WPI - Octogonapus
 
-Uses AutoLib and Okabi libraries
+I fixed issues within the library and implemented my own version of the Pure Pursuit algorithm.
 
 This code implements a Pure Pursuit movement sytem to be used with mentioned libraries
 
