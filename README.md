@@ -6,8 +6,5 @@ IMPORTANT: ORIGINAL LIBRARY BY
 
 I fixed issues within the library and implemented my own version of the Pure Pursuit algorithm.
 
-This code implements a Pure Pursuit movement sytem to be used with mentioned libraries
-
-
 
 Note: I fixed AutoLib to be functional with the current version of Okapi. To use the Pure Pursuit algorithm it is important to incorporate the changes to Okapi.
